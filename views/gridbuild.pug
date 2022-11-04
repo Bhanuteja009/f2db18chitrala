@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h1= title
+  p rows are #{(query.rows)} and columns are #{(query.cols)}
+  - rows = Number(query.rows)
+  - cols = Number(query.cols)
+  - if(! Number.isInteger(rows) || ! Number.isInteger(cols)){
+      p The values should be integers only
+  - }
+  - else if(rows<1 || rows>10){
+      p Rows should be between 1 and 10
+  - }
+  - else if(cols<1 || cols>10){
+      p Columns should be between 1 and 10
+  - }
+  - else{
+    table(class="table") 
+      - for(let i=0;i<rows;i++){
+        tr#middle
+          - for(let j=0;j<cols;j++){
+              td= 1+i+j*rows
+          - }
+      - }
+  - }

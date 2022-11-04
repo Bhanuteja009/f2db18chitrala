@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= title
+  - var image_names=["house1.jfif","house2.jfif","house3.jfif","house4.jfif","house5.jfif"]
+  - for(let i=0;i<3;i++){
+      - let ind=Math.floor(Math.random()*5);
+      img(src=`images/${image_names[ind]}` alt=`we have house ${ind}` height="300px" width="300px")
+
+  - }
