@@ -16,6 +16,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var houseRouter = require('./routes/house');
 var gridBuildRouter = require('./routes/gridbuild');
+var resourceRouter = require('./routes/resource');
 var selectorRouter = require('./routes/selector');
 var house = require("./models/house");
 
@@ -36,6 +37,7 @@ app.use('/users', usersRouter);
 app.use('/house', houseRouter);
 app.use('/gridbuild', gridBuildRouter);
 app.use('/selector', selectorRouter);
+app.use('/resource', resourceRouter);
 
 // We can seed the collection if needed on 
 async function recreateDB(){ 
