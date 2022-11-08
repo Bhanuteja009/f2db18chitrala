@@ -2,10 +2,10 @@ extends layout
 
 block content
   h1= title
-  - let results=[{house_bedroom:4,house_rent:1000,house_address:"walnut"},{house_bedroom:3,house_rent:800,house_address:"parkway"},{house_bedroom:5,house_rent:1400,house_address:"horizons"}]
+  - let items=results
   div(class="container-fluid")
   div(class="row")
-  each value,index in results
+  each value,index in items
     div(class="col-sm-2" onclick=`buy(${index})`)  #{value.house_bedroom} bedroom house, in #{value.house_address}, rent is #{value.house_rent}
   script.
     function buy(index)

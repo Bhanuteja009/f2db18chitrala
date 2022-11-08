@@ -31,3 +31,16 @@ exports.house_delete = function(req, res) {
 exports.house_update_put = function(req, res) { 
     res.send('NOT IMPLEMENTED: House update PUT' + req.params.id); 
 };
+
+// VIEWS 
+// Handle a show all view 
+exports.house_view_all_Page = async function(req, res) { 
+    try{ 
+        theHouses = await house.find(); 
+        res.render('house', { title: 'House Search Results', results: theHouses }); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
+};
