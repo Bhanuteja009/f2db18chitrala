@@ -59,6 +59,22 @@ house({house_bedrooms:6,  house_rent:800,
       if(err) return console.error(err); 
       console.log("Second object saved") 
   }); 
+
+  let instance3 = new 
+house({house_bedrooms:3,  house_rent:600, 
+  house_address:"parkway"}); 
+  instance3.save( function(err,doc) { 
+      if(err) return console.error(err); 
+      console.log("Third object saved") 
+  }); 
+
+  let instance4 = new 
+  house({house_bedrooms:1,  house_rent:425, 
+    house_address:"horizons"}); 
+    instance4.save( function(err,doc) { 
+        if(err) return console.error(err); 
+        console.log("Fourth object saved") 
+    }); 
 } 
  
 let reseed = true; 
