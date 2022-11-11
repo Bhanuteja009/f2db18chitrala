@@ -13,8 +13,15 @@ exports.house_list = async function(req, res) {
 }; 
 
 // for a specific House. 
-exports.house_detail = function(req, res) { 
-    res.send('NOT IMPLEMENTED: House detail: ' + req.params.id); 
+exports.house_detail = async function(req, res) { 
+    console.log("detail"  + req.params.id) 
+    try { 
+        result = await house.findById( req.params.id) 
+        res.send(result) 
+    } catch (error) { 
+        res.status(500) 
+        res.send(`{"error": document for id ${req.params.id} not found`); 
+    } 
 }; 
  
 // Handle House create on POST. 
@@ -28,9 +35,25 @@ exports.house_delete = function(req, res) {
 }; 
  
 // Handle House update form on PUT. 
-exports.house_update_put = function(req, res) { 
-    res.send('NOT IMPLEMENTED: House update PUT' + req.params.id); 
-};
+exports.house_update_put = async function(req, res) { 
+    console.log(`update on id ${req.params.id} with body 
+${JSON.stringify(req.body)}`) 
+    try { 
+        let toUpdate = await house.findById( req.params.id) 
+        // Do updates of properties 
+        if(req.body.house_bedrooms)  
+               toUpdate.house_bedrooms = req.body.house_bedrooms; 
+        if(req.body.house_rent) toUpdate.house_rent = req.body.house_rent; 
+        if(req.body.house_address) toUpdate.house_address = req.body.house_address; 
+        let result = await toUpdate.save(); 
+        console.log("Sucess " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": ${err}: Update for id ${req.params.id} 
+failed`); 
+    } 
+}; 
 
 // VIEWS 
 // Handle a show all view 
