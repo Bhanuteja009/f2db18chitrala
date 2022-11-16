@@ -6,3 +6,16 @@ body {
 a {
   color: #00B7FF;
 }
+.houseAttr { 
+  background-color: aquamarine; 
+  width: 120px; 
+} 
+.hs{
+  box-shadow: inset;
+  color:coral;
+  width: 200px;
+  padding:30px;
+  font-style: oblique;
+  font-size: large;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
