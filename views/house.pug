@@ -4,11 +4,13 @@ block content
   h1= title
   - let items=results
   div(class="container-fluid")
-  div(class="row")
+  div(class="row m-1")
   each value,index in items
+    - let destination = `dispatch(\"/house/update?id=${value._id}\")`
     div(class="col-sm-2" onclick=`buy(${index})`)  #{value.house_bedroom} bedroom house, in #{value.house_address}, rent is #{value.house_rent}
+      button.btn( class="btn-primary ml-1", onclick= destination) Update
   script.
-    function buy(index)
+    function dispatch(path)
     {
-      alert(`You purchased Item ${index+1}`)
+      window.location.href=path 
     } 
