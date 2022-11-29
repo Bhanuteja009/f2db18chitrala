@@ -5,10 +5,18 @@ block content
   - let items=results
   div(class="container-fluid")
   div(class="row m-1")
+  - let createDestination = `dispatch(\"/house/create")`
+    button.btn( class="btn-success ml-1", onclick= createDestination) Create
   each value,index in items
     - let destination = `dispatch(\"/house/update?id=${value._id}\")`
+    - let detailDestination = `dispatch(\"/house/detail?id=${value._id}\")`
+    - let deleteDestination = `dispatch(\"/house/delete?id=${value._id}\")`
     div(class="col-sm-2" onclick=`buy(${index})`)  #{value.house_bedroom} bedroom house, in #{value.house_address}, rent is #{value.house_rent}
-      button.btn( class="btn-primary ml-1", onclick= destination) Update
+      br
+      div 
+        button.btn( class="btn-warning ml-1", onclick= destination) Update    
+        button.btn( class="btn-primary ml-1", onclick= detailDestination) View
+        button.btn( class="btn-danger ml-1", onclick= deleteDestination) Delete
   script.
     function dispatch(path)
     {
