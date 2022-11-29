@@ -1,16 +1,12 @@
 extends layout
-
-block content
-  h1= title
-  p This is web apps lab10  #{title}
-  button(type="button", class="btn btn-secondary", onclick="doBump()") Press me
-  div(id="bump") Bump the count
-  script.
-    var count=0;
-    var bump=1;
-    function doBump(){
-      count += bump;
-      bump++;
-      document.getElementById("bump").innerHTML="Count "+count+" with bump "+bump;
-    }
-  a(href="house") Houses info
+ 
+block content 
+  if (!user) 
+    a(href="/login") Login 
+    br 
+    a(href="/register") Register 
+  if (user) 
+    p You are currently logged in as #{user.username} 
+    a(href="/house") Take me to houses 
+    br 
+    a(href="/logout") Logout
